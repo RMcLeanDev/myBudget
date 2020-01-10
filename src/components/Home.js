@@ -20,7 +20,7 @@ function Home({dispatch}){
 
   return(
     <div>
-      <Something>My Budget</Something>
+      <Something>My Budget!</Something>
     </div>
   )
 }
