@@ -1,28 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import Header from './Header';
 import {connect} from 'react-redux';
+import SignIn from './SignIn';
 
-function Home({dispatch}){
-  const Something = styled.h1`
-    @keyframes pulse {
-      0%{color: hotpink}
-      50%{color: limegreen}
-      100%{color: hotpink}
-    }
-      animation: pulse 1s linear infinite;
-      color: green;
-      &:hover {
-        cursor: pointer;
-        animation: none;
-        color: black;
-      }
-  `
+function Home(props){
 
   return(
     <div>
-      <Something>My Budget!</Something>
+      <h1>Welcome to me</h1>
     </div>
   )
 }
 
-export default connect()(Home)
+export default Home;

@@ -1,19 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import * as firebase from 'firebase';
 
 function Header(){
-  const Div = styled.div`
-    h2{
-      margin-top: 0;
-      padding-top: 15px;
-    }
-  `
+  
+  function signOut(){
+      firebase.auth().signOut();
+  }
+
   return(
-    <Div>
+    <div>
       <h2>THIS IS A HEADER</h2>
       <Link to='/'>Home</Link>
-    </Div>
+      <button onClick={signOut}>Sign Out</button>
+    </div>
   )
 }
 
