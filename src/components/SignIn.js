@@ -25,21 +25,20 @@ function SignIn(){
     if(signUp){
         signUpForm = <SignUp closeSignUp={() => {setSignUp(false)}}/>
     } else {
-        signUpForm = null;
+        signUpForm = <div className="signInForm">
+            <form onSubmit={signInFunction}>
+                <input placeholder="Email" type="email" ref={value => {_email = value}}/>
+                <input placeholder="Password" type="password" ref={value => {_password = value}}/>
+                <button type="submit">Sign in</button>
+                <p>{error}</p>
+            </form>
+            <h3 onClick={() => {setSignUp(true)}}>Create account?</h3>
+        </div>;
     }
 
     return(
         <div className="signIn">
             {signUpForm}
-            <div className="signInForm">
-                <form onSubmit={signInFunction}>
-                    <input placeholder="Email" type="email" ref={value => {_email = value}}/>
-                    <input placeholder="Password" type="password" ref={value => {_password = value}}/>
-                    <button type="submit">Sign in</button>
-                    <p>{error}</p>
-                </form>
-                <h3 onClick={() => {setSignUp(true)}}>Create account?</h3>
-            </div>
         </div>
     )
 }

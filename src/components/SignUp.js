@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import * as firebase from 'firebase/app';
+import '../scss/signUp.scss';
 
 function SignUp(props){
 
