@@ -32,18 +32,20 @@ function SignUp(props){
     }
 
     return(
-        <div className="signUpForm">
-            <form onSubmit={signUpFunction}>
-                <input type="text" placeholder='Name' ref={value => {_name = value}}/><br />
-                <input type="email" placeholder='Email' ref={value => {_email = value}}/><br />
-                <input type="password" placeholder="Password" ref={value => {_passwordOne = value}}/><br />
-                <input type="password" placeholder="Confirm Password" ref={value => {_passwordTwo = value}}/><br />
-                {passwordError}
-                <input placeholder="bot" style={{display: "none"}} ref={value => {_botProtection = value}} />
-                <br />
-                <button type="submit">Sign Up</button>
-            </form>
-            <p>Already have a account? <span onClick={props.closeSignUp}>Click Here!</span></p>
+        <div className="signUpContainer">
+            <div className="signUpForm">
+                <form onSubmit={signUpFunction}>
+                    <input type="text" placeholder='Name' ref={value => {_name = value}}/><br />
+                    <input type="email" placeholder='Email' ref={value => {_email = value}}/><br />
+                    <input type="password" placeholder="Password" ref={value => {_passwordOne = value}}/><br />
+                    <input type="password" placeholder="Confirm Password" ref={value => {_passwordTwo = value}}/><br />
+                    {passwordError}
+                    <input placeholder="bot" style={{display: "none"}} ref={value => {_botProtection = value}} />
+                    <br />
+                    <button type="submit">Sign Up</button>
+                </form>
+                <p>Already have a account? <span onClick={props.closeSignUp}>Click Here!</span></p>
+            </div>
         </div>
     )
 }
