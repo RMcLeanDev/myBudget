@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Header from './Header';
+import Budget from './Budget';
+import Debts from './Debts';
 
 function Home(props){
 
@@ -11,6 +13,8 @@ function Home(props){
     <div>
       <Header userInformation={props.userInformation}/>
       <h1>Welcome to my budget!</h1>
+      <Budget />
+      <Debts />
     </div>
   } else {
     display = <img src={require('../assets/loadingGif.gif')} />
