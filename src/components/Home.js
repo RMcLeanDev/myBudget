@@ -8,6 +8,8 @@ function Home(props){
 
   let display;
 
+  console.log(props)
+
   if(props.userInformation){
     display = 
     <div>

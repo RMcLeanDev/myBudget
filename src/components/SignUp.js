@@ -22,9 +22,9 @@ function SignUp(props){
             } else {
                 firebase.auth().createUserWithEmailAndPassword(_email.value, _passwordOne.value).then(user => {
                     let userId = user.user.uid;
-                    firebase.firestore().collection('users').doc(userId).set({name: _name.value, email: _email.value, id: user.user.uid, debts: {status: 'none'}, budget: {status: 'none'}})
+                    firebase.firestore().collection('users').doc(userId).set({name: _name.value, email: _email.value, id: user.user.uid})
                 }).catch(error => {
-                    console.log(error)
+                    setPasswordError(error.message)
                 })
             }
         } else {

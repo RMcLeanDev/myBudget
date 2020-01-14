@@ -4,12 +4,17 @@ import {store} from './../index';
 const {types, firebaseConfig} = constants;
 
 firebase.initializeApp(firebaseConfig);
+let db = firebase.firestore();
 
 firebase.auth().onAuthStateChanged(function(user) {
   if(user){
     store.dispatch(authUserTrue());
-    firebase.firestore().collection('users').doc(user.uid).get().then((snapshot) => {
+    db.collection('users').doc(user.uid).get().then((snapshot) => {
       store.dispatch(setUserInformation(snapshot.data()));
+      if(snapshot.data()){
+      } else {
+        console.log("loading")
+      }
     })
   } else {
     store.dispatch(authUserFalse());
