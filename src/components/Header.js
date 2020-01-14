@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as firebase from 'firebase';
+import '../scss/header.scss';
 
 function Header(props){
   
@@ -11,9 +12,9 @@ function Header(props){
   console.log(props)
 
   return(
-    <div>
-      <h2>Welcome {props.userInformation.name}</h2>
+    <div className="header">
       <Link to='/'>Home</Link>
+      <h2>Welcome {props.userInformation.name}</h2>
       <button onClick={signOut}>Sign Out</button>
     </div>
   )
