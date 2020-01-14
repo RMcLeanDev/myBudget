@@ -9,8 +9,6 @@ function Header(props){
       firebase.auth().signOut();
   }
 
-  console.log(props)
-
   return(
     <div className="header">
       <Link to='/'>Home</Link>

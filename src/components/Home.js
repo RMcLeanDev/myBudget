@@ -13,8 +13,8 @@ function Home(props){
     <div>
       <Header userInformation={props.userInformation}/>
       <h1>Welcome to my budget!</h1>
-      <Budget />
-      <Debts />
+      <Debts debts={props.userInformation.debts}/>
+      <Budget budget={props.userInformation.budget}/>
     </div>
   } else {
     display = <img src={require('../assets/loadingGif.gif')} />
