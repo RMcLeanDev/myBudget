@@ -4,17 +4,16 @@ import {store} from './../index';
 const {types, firebaseConfig} = constants;
 
 firebase.initializeApp(firebaseConfig);
-firebase.firestore().collection('users').get().then((snapshot) => {
-  snapshot.docs.forEach(doc => {
-    console.log(doc.data())
-  })
-})
 
 firebase.auth().onAuthStateChanged(function(user) {
   if(user){
     store.dispatch(authUserTrue());
+    firebase.firestore().collection('users').doc(user.uid).get().then((snapshot) => {
+      store.dispatch(setUserInformation(snapshot.data()));
+    })
   } else {
     store.dispatch(authUserFalse());
+    store.dispatch(dumpUserInformation());
   }
 })
 
@@ -28,4 +27,13 @@ export const authUserFalse = () => ({
 
 export const testFunction = () => ({
   type: types.TEST_FUNCTION
+})
+
+export const setUserInformation = (information) => ({
+  type: types.SET_USER_INFORMATION,
+  information
+})
+
+export const dumpUserInformation = () => ({
+  type: types.DUMP_USER_INFORMATION
 })

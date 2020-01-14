@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import * as firebase from 'firebase';
 
-function Header(){
+function Header(props){
   
   function signOut(){
       firebase.auth().signOut();
   }
 
+  console.log(props)
+
   return(
     <div>
-      <h2>THIS IS A HEADER</h2>
+      <h2>Welcome {props.userInformation.name}</h2>
       <Link to='/'>Home</Link>
       <button onClick={signOut}>Sign Out</button>
     </div>

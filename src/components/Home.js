@@ -1,15 +1,19 @@
 import React from 'react';
-import Header from './Header';
 import {connect} from 'react-redux';
-import SignIn from './SignIn';
+import Header from './Header';
 
 function Home(props){
 
   return(
     <div>
+      <Header userInformation={props.userInformation}/>
       <h1>Welcome to me</h1>
     </div>
   )
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  userInformation: state.userInformationState
+})
+
+export default connect(mapStateToProps)(Home);
