@@ -34,7 +34,7 @@ function SignIn(){
                     <button type="submit">Sign in</button>
                     <p>{error}</p>
                 </form>
-                <h3 onClick={() => {setSignUp(true)}}>Create account?</h3>
+                <h3 onClick={() => {setSignUp(true)}} className="signUpButton">Create account?</h3>
             </div>
         </div>;
     }

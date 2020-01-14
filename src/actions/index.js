@@ -4,6 +4,11 @@ import {store} from './../index';
 const {types, firebaseConfig} = constants;
 
 firebase.initializeApp(firebaseConfig);
+firebase.firestore().collection('users').get().then((snapshot) => {
+  snapshot.docs.forEach(doc => {
+    console.log(doc.data())
+  })
+})
 
 firebase.auth().onAuthStateChanged(function(user) {
   if(user){

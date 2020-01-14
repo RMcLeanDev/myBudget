@@ -31,4 +31,20 @@
             }
         }
     }
+    button{
+        padding: 5px;
+        font-size: 15px;
+        color: white;
+        font-weight: bold;
+        background-color: black;
+        border: 1px solid teal;
+        cursor: pointer;
+    }
+    .signUpButton{
+        text-decoration: underline;
+        cursor: pointer;
+        &:hover{
+            color: teal;
+        }
+    }
 }

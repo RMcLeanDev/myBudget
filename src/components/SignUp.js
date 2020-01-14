@@ -21,9 +21,10 @@ function SignUp(props){
                 return setPasswordError("Your passwords doesn't match. Please try again.")
             } else {
                 firebase.auth().createUserWithEmailAndPassword(_email.value, _passwordOne.value).then(user => {
-                    firebase.database().ref(`users/${user.user.uid}`).set({name: _name.value,id: user.user.uid})
+                    let userId = user.user.uid;
+                    firebase.firestore().collection('users').doc(userId).set({name: _name.value, email: _email.value, id: user.user.uid})
                 }).catch(error => {
-                    setPasswordError(error.message)
+                    console.log(error)
                 })
             }
         } else {
@@ -44,7 +45,7 @@ function SignUp(props){
                     <br />
                     <button type="submit">Sign Up</button>
                 </form>
-                <p>Already have a account? <span onClick={props.closeSignUp}>Click Here!</span></p>
+                <p>Already have a account? <span onClick={props.closeSignUp} className="signUpClick">Click Here!</span></p>
             </div>
         </div>
     )
