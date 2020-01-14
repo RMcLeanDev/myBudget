@@ -4,10 +4,21 @@ import Header from './Header';
 
 function Home(props){
 
-  return(
+  let display;
+
+  if(props.userInformation){
+    display = 
     <div>
       <Header userInformation={props.userInformation}/>
-      <h1>Welcome to me</h1>
+      <h1>Welcome to my budget!</h1>
+    </div>
+  } else {
+    display = <img src={require('../assets/loadingGif.gif')} />
+  }
+
+  return(
+    <div>
+      {display}
     </div>
   )
 }
