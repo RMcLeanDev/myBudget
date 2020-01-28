@@ -10,8 +10,8 @@ firebase.auth().onAuthStateChanged(function(user) {
   if(user){
     store.dispatch(authUserTrue());
     db.collection('users').doc(user.uid).get().then((snapshot) => {
-      store.dispatch(setUserInformation(snapshot.data()));
       if(snapshot.data()){
+        store.dispatch(setUserInformation(snapshot.data()));
       } else {
         console.log("loading")
       }

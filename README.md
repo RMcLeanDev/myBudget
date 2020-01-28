@@ -1,3 +1,5 @@
+![Version](https://img.shields.io/badge/Version-1.0-brightgreen?style=for-the-badge)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

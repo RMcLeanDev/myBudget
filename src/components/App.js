@@ -9,15 +9,19 @@ import SignIn from './SignIn';
 function App(props) {
 
   let checkedAuthState;
+  let loader;
 
-  if(props.authUser){
+  if(props.authUser === true){
     checkedAuthState = Home
-  } else {
+  } else if(props.authUser === false) {
     checkedAuthState = SignIn
+  } else {
+    loader = <img src={require('../assets/loadingGif.gif')} />
   }
 
   return (
     <div className="App">
+      {loader}
       <Switch>
         <Route exact path ='/' component={checkedAuthState}/>
         <Route component={Error404}/>
