@@ -32,3 +32,17 @@
     transform: rotate(360deg);
   }
 }
+
+.loadingGif{
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+}

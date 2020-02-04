@@ -7,7 +7,6 @@ const userInformationReducer = (state = userInformationState, action) => {
     case types.SET_USER_INFORMATION:
       newState = state;
         newState = action.information;
-        console.log(action)
       return newState;
     case types.DUMP_USER_INFORMATION:
       newState = state;

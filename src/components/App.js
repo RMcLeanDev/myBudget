@@ -16,7 +16,7 @@ function App(props) {
   } else if(props.authUser === false) {
     checkedAuthState = SignIn
   } else {
-    loader = <img src={require('../assets/loadingGif.gif')} />
+    loader = <div className="loadingGif"><img src={require('../assets/loadingGif.gif')} /></div>
   }
 
   return (

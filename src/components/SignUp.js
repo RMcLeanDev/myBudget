@@ -22,7 +22,9 @@ function SignUp(props){
             } else {
                 firebase.auth().createUserWithEmailAndPassword(_email.value, _passwordOne.value).then(user => {
                     let userId = user.user.uid;
-                    firebase.firestore().collection('users').doc(userId).set({name: _name.value, email: _email.value, id: user.user.uid})
+                    firebase.database().ref(`users/${userId}`).set({user_id: userId, name: _name.value, email: _email.value, debts: {status: true}, budget: {status: true}}).catch(error => {
+                        console.log(error)
+                    })
                 }).catch(error => {
                     setPasswordError(error.message)
                 })

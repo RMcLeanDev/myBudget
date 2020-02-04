@@ -1,25 +1,27 @@
 import constants from './../constants';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import {store} from './../index';
 const {types, firebaseConfig} = constants;
 
 firebase.initializeApp(firebaseConfig);
-let db = firebase.firestore();
+
+let currentUser;
 
 firebase.auth().onAuthStateChanged(function(user) {
   if(user){
-    store.dispatch(authUserTrue());
-    db.collection('users').doc(user.uid).get().then((snapshot) => {
-      if(snapshot.data()){
-        store.dispatch(setUserInformation(snapshot.data()));
-      } else {
-        console.log("loading")
-      }
+    firebase.database().ref(`users/${user.uid}`).on('value', function(snapshot) {
+      store.dispatch(setUserInformation(snapshot.val()))
     })
+    store.dispatch(authUserTrue());
+    currentUser = user.uid;
   } else {
     store.dispatch(authUserFalse());
     store.dispatch(dumpUserInformation());
   }
+})
+
+export const testFunction = () => ({
+  type: types.TEST_FUNCTION
 })
 
 export const authUserTrue = () => ({
@@ -28,10 +30,6 @@ export const authUserTrue = () => ({
 
 export const authUserFalse = () => ({
   type: types.AUTH_USER_FALSE
-})
-
-export const testFunction = () => ({
-  type: types.TEST_FUNCTION
 })
 
 export const setUserInformation = (information) => ({

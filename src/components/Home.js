@@ -8,8 +8,6 @@ function Home(props){
 
   let display;
 
-  console.log(props)
-
   if(props.userInformation){
     display = 
     <div>
@@ -19,7 +17,7 @@ function Home(props){
       <Budget budget={props.userInformation.budget}/>
     </div>
   } else {
-    display = <img src={require('../assets/loadingGif.gif')} />
+    display = <div className="loadingGif"><img src={require('../assets/loadingGif.gif')} /></div>
   }
 
   return(
