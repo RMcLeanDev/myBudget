@@ -1,5 +1,26 @@
-.debts{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.debtContainer{
+    .top{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 50px;
+        .addDebtButton{
+            height: 40px;
+            margin-left: 40px;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.4s linear;
+            &:hover{
+                height: 50px;
+                border-radius: 50px;
+                background-color: rgba(0,0,0,0.6);
+            }
+        }
+    }
+    .debts{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
 }

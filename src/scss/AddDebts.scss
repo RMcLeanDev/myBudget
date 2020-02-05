@@ -1,0 +1,24 @@
+.addDebtContainer{
+    position: fixed;
+    top: 50px;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        position: fixed;
+        top: 70px;
+        right: 20px;
+        height: 50px;
+        cursor: pointer;
+        &:hover{
+            background-color: red;
+        }
+    }
+    .addDebtWindow{
+        background-color: white;
+        width: 80vw;
+    }
+}

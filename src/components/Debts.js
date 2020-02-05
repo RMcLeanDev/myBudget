@@ -1,25 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import * as firebase from 'firebase';
-import { v4 } from 'uuid';
 import '../scss/Debts.scss';
+import AddDebt from './AddDebt';
 
 function Debts(props){
 
-    let _total = null;
-    let _current = null;
-    let _name = null;
+    const [addDebtForm, setDebtForm] = useState(false);
     let display;
-
-    function sendDebt(e){
-        e.preventDefault()
-        let num = _total.value - _current.value;
-        console.log(num)
-        let user = firebase.auth().currentUser.uid;
-        firebase.database().ref(`users/${user}/debts/${v4()}`).set({totalDebtAmount: num, name: _name.value, timeStamp: Date.now(), currentAmountPaid: parseInt(_current.value), startAmount: parseInt(_total.value)})
-        _total.value = null;
-        _current.value = null;
-        _name.value = null;
-    }
+    let debtForm;
 
     function deleteThisDebt(id){
         let user = firebase.auth().currentUser.uid;
@@ -38,7 +26,7 @@ function Debts(props){
             } else if (num >= 85){
                 bgColor = "rgba(30,255,0,0.6)"
             }
-            return <div key={debts} className="debts" style={{"backgroundColor": bgColor, "borderBottom": "1px solid black"}}>
+            return <div key={debts} className="debts" style={{"backgroundColor": bgColor, "marginBottom": "10px"}}>
                 <h3>{props.debts[debts].name}</h3>
                 <p>{props.debts[debts].startAmount}</p>
                 <p>{props.debts[debts].totalDebtAmount}</p>
@@ -51,17 +39,21 @@ function Debts(props){
         display = <div><h3>Add your first debt!</h3></div>
     }
 
+    if(addDebtForm){
+        debtForm = <AddDebt closeDebtForm={() => setDebtForm(false)}/>
+    } else {
+        debtForm = null;
+    }
+
     return(
-        <div>
+        <div className="debtContainer">
             <hr/>
-            <h1>Debts Section</h1>
+            {debtForm}
+            <div className="top">
+                <h1>Debts Section</h1>
+                <img onClick={() => setDebtForm(true)} className="addDebtButton" src={require('../assets/plus.png')}/>
+            </div>
             {display}
-            <form onSubmit={sendDebt}>
-                <input placeholder="Name of Debt" ref={value => {_name = value}}/>
-                <input type="number" placeholder="Total Debt Amount" ref={value => {_total = value}}/>
-                <input type="number" placeholder="Current Amount Paid" ref={value => {_current = value}}/>
-                <button type="submit">Enter</button>
-            </form>
         </div>
     )
 }
