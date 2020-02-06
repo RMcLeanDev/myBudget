@@ -28,11 +28,15 @@
             width: 90vw;
             height: 0.75in;
             margin: auto;
+            grid-template-columns: auto;
+            grid-template-rows: auto;
             .colorBar{
                 height: 0.25in;
+                grid-area: 1 / 1 / 1 / 1;
             }
             img{
                 width: 100%;
+                grid-area: 1 / 1 / 1 / 1;
             }
         }
     }
