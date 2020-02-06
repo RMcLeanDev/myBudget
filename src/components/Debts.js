@@ -26,12 +26,17 @@ function Debts(props){
             } else if (num >= 85){
                 bgColor = "rgba(30,255,0,0.6)"
             }
-            return <div key={debts} className="debts" style={{"backgroundColor": bgColor, "marginBottom": "10px"}}>
-                <h3>{props.debts[debts].name}</h3>
-                <p>{props.debts[debts].startAmount}</p>
-                <p>{props.debts[debts].totalDebtAmount}</p>
-                <p>{props.debts[debts].currentAmountPaid}</p>
-                <button onClick={() => deleteThisDebt(debts)}>Delete</button>
+            return <div key={debts} className="debts" style={{"marginBottom": "10px"}}>
+                <div className="debtsInformation">
+                    <h3>{props.debts[debts].name}</h3>
+                    <p>{props.debts[debts].startAmount}</p>
+                    <p>{props.debts[debts].totalDebtAmount}</p>
+                    <p>{props.debts[debts].currentAmountPaid}</p>
+                </div>
+                <div className="progress">
+                    <img src={require('../assets/progressBar.png')}/>
+                    <div className="colorBar" style={{"backgroundColor": bgColor, "width": `${num}%`}}/>
+                </div>
                 <p>Last Updated: {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(props.debts[debts].timeStamp)}</p>
             </div>
         })

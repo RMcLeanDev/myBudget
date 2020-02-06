@@ -19,8 +19,21 @@
         }
     }
     .debts{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+        .debtsInformation{
+            display: flex;
+            justify-content: space-around;
+        }
+        .progress{
+            display: grid;
+            width: 90vw;
+            height: 0.75in;
+            margin: auto;
+            .colorBar{
+                height: 0.25in;
+            }
+            img{
+                width: 100%;
+            }
+        }
     }
 }
