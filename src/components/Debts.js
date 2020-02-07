@@ -28,7 +28,7 @@ function Debts(props){
             }
             return <div key={debts} className="debts" style={{"marginBottom": "10px"}}>
                 <div className="debtsInformation">
-                    <h3>{props.debts[debts].name}</h3>
+                    <h2>{props.debts[debts].name}</h2>
                     <p>{props.debts[debts].startAmount}</p>
                     <p>{props.debts[debts].totalDebtAmount}</p>
                     <p>{props.debts[debts].currentAmountPaid}</p>
