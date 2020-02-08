@@ -34,7 +34,6 @@ function Debts(props){
             display = Object.keys(props.debts).map(debts => {
                 let bgColor;
                 let num = ((props.debts[debts].currentAmountPaid / props.debts[debts].startAmount) * 100);
-                console.log(num)
                 if(num <= 40){
                     bgColor = "rgba(255,0,0,0.6)"
                 } else if (num > 40 && num < 85){

@@ -4,8 +4,6 @@ import * as firebase from 'firebase';
 
 function DebtPayment(props){
 
-    console.log(props)
-
     let _number = null;
 
     function debtPayment(e){
