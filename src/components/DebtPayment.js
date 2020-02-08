@@ -11,7 +11,19 @@ function DebtPayment(props){
         e.preventDefault()
         let newBalance = parseFloat(props.information.values.totalDebtAmount) - parseFloat(_number.value);
         let newAmountPaid = parseFloat(props.information.values.currentAmountPaid) + parseFloat(_number.value);
+        let newPayment;
+        let num;
+        if(props.information.values.payments){
+            num = parseInt(props.information.values.payments.length);
+            newPayment = {amount: _number.value, timeStamp: Date.now()}
+        } else {
+            num = 0;
+            newPayment = {amount: _number.value, timeStamp: Date.now()}
+        }
         firebase.database().ref(`users/${user}/debts/${props.information.id}`).update({currentAmountPaid: newAmountPaid, totalDebtAmount: newBalance, timeStamp: Date.now()}).catch(error => {
+            console.log(error)
+        })
+        firebase.database().ref(`users/${user}/debts/${props.information.id}/payments/${num}`).set(newPayment).catch(error => {
             console.log(error)
         })
         props.closeDebtPaymentForm();
