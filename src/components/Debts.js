@@ -3,17 +3,20 @@ import * as firebase from 'firebase';
 import '../scss/Debts.scss';
 import AddDebt from './AddDebt';
 import EditDebt from './EditDebt';
+import DebtPayment from './DebtPayment';
 
 function Debts(props){
 
     const [addDebtForm, setDebtForm] = useState(false);
     const [showDebt, setShowDebt] = useState(true);
     const [editDebtForm, setEditForm] = useState({"state": false, information: null});
+    const [debtPaymentForm, setDebtPaymentForm] = useState({"state": false, information: null});
 
     let display;
     let debtForm;
     let showHide;
     let editForm;
+    let paymentForm;
 
     function deleteThisDebt(id){
         let user = firebase.auth().currentUser.uid;
@@ -57,7 +60,7 @@ function Debts(props){
                             <p>Amount Paid:</p>
                             <p>${props.debts[debts].currentAmountPaid}</p>
                         </div>
-                        <h3 className="paymentButton">Make A Payment</h3>
+                        <h3 className="paymentButton" onClick={() => setDebtPaymentForm({"state": true, information: {id: debts, values: props.debts[debts]}})}>Make A Payment</h3>
                         <img className="editButton" src={require('../assets/edit.png')} onClick={() => setEditForm({"state": true, information: props.debts[debts]})}/>
                     </div>
                     <div className="progress">
@@ -85,11 +88,18 @@ function Debts(props){
         editForm = null;
     }
 
+    if(debtPaymentForm.state){
+        paymentForm = <DebtPayment information={debtPaymentForm.information} closeDebtPaymentForm={() => setDebtPaymentForm({"state": false, information: null})}/>
+    } else {
+        paymentForm = null;
+    }
+
     return(
         <div className="debtContainer">
             <hr/>
             {debtForm}
             {editForm}
+            {paymentForm}
             <div className="top">
                 {showHide}
                 <h1>Debts</h1>
