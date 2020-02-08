@@ -57,8 +57,8 @@ function Debts(props){
                             <p>Amount Paid:</p>
                             <p>${props.debts[debts].currentAmountPaid}</p>
                         </div>
-                        <h2>Make A Payment</h2>
-                        <img src={require('../assets/edit.png')} onClick={() => setEditForm({"state": true, information: props.debts[debts]})}/>
+                        <h3 className="paymentButton">Make A Payment</h3>
+                        <img className="editButton" src={require('../assets/edit.png')} onClick={() => setEditForm({"state": true, information: props.debts[debts]})}/>
                     </div>
                     <div className="progress">
                         <img src={require('../assets/progressBar.png')}/>

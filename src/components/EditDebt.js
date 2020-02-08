@@ -1,4 +1,5 @@
 import React from 'react';
+import '../scss/EditDebt.scss';
 
 function EditDebt(props){
 
@@ -9,16 +10,14 @@ function EditDebt(props){
     }
 
     return(
-        <div>
-            <div className="addDebtContainer">
+        <div className="editDebtContainer">
             <img src={require("../assets/x.png")} onClick={props.closeEditDebtForm}/>
-            <div className="addDebtWindow">
+            <div className="editDebtWindow">
                 <form onSubmit={updateDebt}>
                     
                     <button type="submit">Enter</button>
                 </form>
             </div>
-        </div>
         </div>
     )
 }

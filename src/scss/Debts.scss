@@ -33,9 +33,31 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            img{
+            .editButton{
                 height: 40px;
                 cursor: pointer;
+            }
+            .paymentButton{
+                margin-right: 30px;
+                cursor: pointer;
+                text-decoration: underline;
+                &:hover{
+                    color: teal;
+                }
+            }
+            @include mQ(775px){
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                margin-bottom: 10px;
+                .editButton{
+                    grid-area: 2 / 4;
+                    justify-self: center;
+                }
+                .paymentButton{
+                    margin: 0;
+                    padding: 0;
+                    justify-self: center;
+                }
             }
         }
         .progress{
