@@ -1,12 +1,14 @@
+@import './Mixin.scss';
+
 .debtContainer{
     .top{
+        width: 90vw;
+        margin: auto;
         display: flex;
-        justify-content: center;
         align-items: center;
-        margin-left: 50px;
+        justify-content: space-between;
         .addDebtButton{
             height: 40px;
-            margin-left: 40px;
             background-color: rgba(0,0,0,0.2);
             border-radius: 40px;
             cursor: pointer;
@@ -17,27 +19,38 @@
                 background-color: rgba(0,0,0,0.6);
             }
         }
+        h2{
+            text-decoration: underline;
+            cursor: pointer;
+            &:hover{
+                color: teal;
+            }
+        }
     }
     .debts{
+        border-bottom: 1px solid black;
         .debtsInformation{
             display: flex;
             justify-content: space-around;
+            align-items: center;
+            img{
+                height: 40px;
+                cursor: pointer;
+            }
         }
         .progress{
             display: grid;
             width: 90vw;
-            height: 0.75in;
             margin: auto;
             grid-template-columns: auto;
             grid-template-rows: auto;
             .colorBar{
                 grid-area: 1 / 1 / 1 / 1;
-                height: 50px;
             }
             img{
-                height: 50px;
                 width: 100%;
                 grid-area: 1 / 1 / 1 / 1;
+                border: 1px solid black;
             }
         }
     }
