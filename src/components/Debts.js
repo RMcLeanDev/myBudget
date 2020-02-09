@@ -4,6 +4,7 @@ import '../scss/Debts.scss';
 import AddDebt from './AddDebt';
 import EditDebt from './EditDebt';
 import DebtPayment from './DebtPayment';
+import DebtPaymentHistory from './DebtPaymentHistory';
 
 function Debts(props){
 
@@ -33,6 +34,7 @@ function Debts(props){
         if(props.debts){
             display = Object.keys(props.debts).map(debts => {
                 let bgColor;
+                let debt = props.debts[debts];
                 let num = ((props.debts[debts].currentAmountPaid / props.debts[debts].startAmount) * 100);
                 if(num <= 40){
                     bgColor = "rgba(255,0,0,0.6)"
@@ -45,28 +47,30 @@ function Debts(props){
                     <div className="debtsInformation">
                         <div>
                             <p>Name</p>
-                            <h2>{props.debts[debts].name}</h2>
+                            <h2>{debt.name}</h2>
                         </div>
                         <div>
                             <p>Total Due:</p>
-                            <p>${props.debts[debts].startAmount}</p>
+                            <p>${debt.startAmount}</p>
                         </div>
                         <div>
                             <p>Remaining:</p>
-                            <p>${props.debts[debts].totalDebtAmount}</p>
+                            <p>${debt.totalDebtAmount}</p>
                         </div>
                         <div>
                             <p>Amount Paid:</p>
-                            <p>${props.debts[debts].currentAmountPaid}</p>
+                            <p>${debt.currentAmountPaid}</p>
                         </div>
-                        <h3 className="paymentButton" onClick={() => setDebtPaymentForm({"state": true, information: {id: debts, values: props.debts[debts]}})}>Make A Payment</h3>
-                        <img className="editButton" src={require('../assets/edit.png')} onClick={() => setEditForm({"state": true, information: props.debts[debts]})}/>
+                        <h3 className="paymentButton" onClick={() => setDebtPaymentForm({"state": true, information: {id: debts, values: debt}})}>Make A Payment</h3>
+                        <img className="editButton" src={require('../assets/edit.png')} onClick={() => setEditForm({"state": true, information: debt})}/>
                     </div>
                     <div className="progress">
                         <img src={require('../assets/progressBar.png')}/>
                         <div className="colorBar" style={{"backgroundColor": bgColor, "width": `${num}%`}}/>
                     </div>
-                    <p>Last Updated: {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(props.debts[debts].timeStamp)}</p>
+                    <div className="payments">
+                        <DebtPaymentHistory information={debt}/>
+                    </div>
                 </div>
             })
         } else {
