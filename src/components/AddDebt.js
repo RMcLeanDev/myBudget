@@ -38,7 +38,7 @@ function AddDebt(props){
                 <form onSubmit={sendDebt}>
                     <input placeholder="Name of Debt" ref={value => {_name = value}}/>
                     <input type="number" min="1" step="any" placeholder="Total Debt Amount" ref={value => {_total = value}}/>
-                    <input type="number" min="1" step="any" placeholder="Current Amount Paid" ref={value => {_current = value}}/>
+                    <input type="number" min="0" step="any" placeholder="Current Amount Paid" ref={value => {_current = value}}/>
                     <button type="submit">Enter</button>
                 </form>
             </div>
