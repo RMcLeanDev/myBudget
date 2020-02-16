@@ -19,11 +19,6 @@ function Debts(props){
     let editForm;
     let paymentForm;
 
-    function deleteThisDebt(id){
-        let user = firebase.auth().currentUser.uid;
-        firebase.database().ref(`users/${user}/debts/${id}`).remove()
-    }
-
     if(showDebt){
         showHide = <h2 onClick={() => setShowDebt(false)}>Hide</h2>
     } else {
@@ -35,13 +30,24 @@ function Debts(props){
             display = Object.keys(props.debts).map(debts => {
                 let bgColor;
                 let debt = props.debts[debts];
-                let num = ((props.debts[debts].currentAmountPaid / props.debts[debts].startAmount) * 100);
+                let num = ((props.debts[debts].currentAmountPaid / props.debts[debts].totalDebtAmount) * 100);
+                let interestChecked;
                 if(num <= 40){
                     bgColor = "rgba(255,0,0,0.6)"
                 } else if (num > 40 && num < 85){
                     bgColor = "rgba(255,165,0,0.6)"
                 } else if (num >= 85){
                     bgColor = "rgba(30,255,0,0.6)"
+                }
+                if(debt.interest){
+                    let newInterestAmount = debt.interestRate / debt.months * (debt.totalDebtAmount - debt.currentAmountPaid);
+                    // interest is (interest_rate/12 * balance);
+                    interestChecked = <div>
+                        <p>Your next payment will have: *${newInterestAmount.toFixed(2)} going towards interest!</p>
+                        <p>*If you make your payments on time.</p>
+                    </div>
+                } else {
+                    interestChecked = null;
                 }
                 return <div key={debts} className="debts" style={{"marginBottom": "10px"}}>
                     <div className="debtsInformation">
@@ -51,18 +57,18 @@ function Debts(props){
                         </div>
                         <div>
                             <p>Total Due:</p>
-                            <p>${debt.startAmount}</p>
+                            <p>${debt.totalDebtAmount}</p>
                         </div>
                         <div>
                             <p>Remaining:</p>
-                            <p>${debt.totalDebtAmount}</p>
+                            <p>${debt.currentBalance}</p>
                         </div>
                         <div>
                             <p>Amount Paid:</p>
                             <p>${debt.currentAmountPaid}</p>
                         </div>
                         <h3 className="paymentButton" onClick={() => setDebtPaymentForm({"state": true, information: {id: debts, values: debt}})}>Make A Payment</h3>
-                        <img className="editButton" src={require('../assets/edit.png')} onClick={() => setEditForm({"state": true, information: debt})}/>
+                        <img className="editButton" src={require('../assets/edit.png')} onClick={() => setEditForm({"state": true, information: {debtItem: debt, id: debts}})}/>
                     </div>
                     <div className="progress">
                         <img src={require('../assets/progressBar.png')}/>
@@ -71,6 +77,7 @@ function Debts(props){
                     <div className="payments">
                         <DebtPaymentHistory information={debt}/>
                     </div>
+                    {interestChecked}
                 </div>
             })
         } else {

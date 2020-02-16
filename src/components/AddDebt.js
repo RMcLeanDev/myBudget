@@ -13,7 +13,7 @@ function AddDebt(props){
     let _name = null;
     let _air = null;
     let _months = null;
-    let _amount = null;
+    let _currentBalance = null;
     let checkedInterest;
     let placeholderForMonthYear;
 
@@ -25,14 +25,12 @@ function AddDebt(props){
 
     function sendDebt(e){
         e.preventDefault()
-        let num = _total.value - _current.value;
-        console.log(num)
         let user = firebase.auth().currentUser.uid;
         let currentPaid;
         let payments;
-        if(_current.value){
-            currentPaid = parseFloat(_current.value);
-            payments = {0: {amount: _current.value, timeStamp: Date.now()}}
+        if(_total.value !== _currentBalance.value){
+            currentPaid = parseFloat(_total.value - _currentBalance.value);
+            payments = {0: {amount: currentPaid, timeStamp: Date.now()}}
         } else {
             currentPaid = 0;
             payments = null;
@@ -44,34 +42,25 @@ function AddDebt(props){
             } else {
                 timePeriod = parseInt(_months.value * 12)
             }
-            firebase.database().ref(`users/${user}/debts/${v4()}`).set({totalDebtAmount: num, name: _name.value, timeStamp: Date.now(), currentAmountPaid: currentPaid, payments, startAmount: parseFloat(_total.value), interest: true, interestRate: parseFloat(_air.value / 100), months: timePeriod})
+            firebase.database().ref(`users/${user}/debts/${v4()}`).set({totalDebtAmount: _total.value, name: _name.value, timeStamp: Date.now(), currentAmountPaid: currentPaid, payments, interest: true, interestRate: parseFloat(_air.value / 100), months: timePeriod, currentBalance: parseFloat(_currentBalance.value)})
         } else {
             // interest false
-            firebase.database().ref(`users/${user}/debts/${v4()}`).set({totalDebtAmount: num, name: _name.value, timeStamp: Date.now(), currentAmountPaid: currentPaid, payments, startAmount: parseFloat(_total.value)}).catch(error => {
+            firebase.database().ref(`users/${user}/debts/${v4()}`).set({totalDebtAmount: _total.value, name: _name.value, timeStamp: Date.now(), currentAmountPaid: currentPaid, payments, currentBalance: parseFloat(_currentBalance.value)}).catch(error => {
                 console.log(error)
             })
         }
         _total.value = null;
-        _current.value = null;
         _name.value = null;
-    }
-
-    function pmt(e){
-        e.preventDefault();
-        // interest is (interest_rate/12 * balance);
-        let r = parseFloat((_air.value / 100) / 12);
-        let payment = parseFloat(_amount.value) * ((r * Math.pow(1 + r, _months.value)) / (Math.pow(1 + r, _months.value) - 1));
-        console.log(payment.toFixed(2));
     }
 
     if(checkInterest){
         checkedInterest = <div>
-            <input type="number" placeholder="Annual Interest Rate" ref={value => {_air = value}}/>
+            <input required type="number" min="0" step="any" placeholder="Interest Rate" ref={value => {_air = value}}/>
             <select id="monthsOrYears" onChange={monthYearCheck} value={monthYear}>
                 <option value="monthSelection">Months</option>
                 <option value="yearSelection">Years</option>
             </select>
-            <input type="number" placeholder={placeholderForMonthYear} ref={value => {_months = value}}/>
+            <input required type="number" min="0" step="any" placeholder={placeholderForMonthYear} ref={value => {_months = value}}/>
         </div>
     } else {
         checkedInterest = null;
@@ -105,9 +94,9 @@ function AddDebt(props){
                     <p>Interest</p>
                 </div>
                 <form onSubmit={sendDebt}>
-                    <input placeholder="Name of Debt" ref={value => {_name = value}}/>
-                    <input type="number" min="1" step="any" placeholder="Total Debt Amount" ref={value => {_total = value}}/>
-                    <input type="number" min="0" step="any" placeholder="Current Amount Paid" ref={value => {_current = value}}/>
+                    <input required placeholder="Name of Debt" ref={value => {_name = value}}/>
+                    <input required type="number" min="1" step="any" placeholder="Total Debt Amount" ref={value => {_total = value}}/>
+                    <input required type="number" min="0" step="any" placeholder="Current Balance" ref={value => {_currentBalance = value}}/>
                     {checkedInterest}
                     <button type="submit">Enter</button>
                 </form>

@@ -9,12 +9,17 @@ function DebtPaymentHistory(props){
 
     if(showHide){
         if(props.information.payments){
-            console.log(props.information.payments)
             payments = <div>
                 {Object.keys(props.information.payments).map(allPayments => {
                     let currentPayment = props.information.payments[allPayments]
-                    return <div>
-                        <h3>${currentPayment.amount}</h3>
+                    let display;
+                    if(props.information.interest){
+                        display = <h3>${currentPayment.amount} with ${currentPayment.interestPaid} going towards interest.</h3>
+                    } else {
+                        display = <h3>${currentPayment.amount}</h3>
+                    }
+                    return <div key={allPayments}>
+                        {display}
                         <p>Made on: {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(currentPayment.timeStamp)}</p>
                     </div>
                 })}

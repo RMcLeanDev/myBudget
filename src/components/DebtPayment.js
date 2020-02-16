@@ -5,22 +5,35 @@ import * as firebase from 'firebase';
 function DebtPayment(props){
 
     let _number = null;
+    console.log(props)
 
     function debtPayment(e){
         let user = firebase.auth().currentUser.uid;
         e.preventDefault()
-        let newBalance = parseFloat(props.information.values.totalDebtAmount) - parseFloat(_number.value);
-        let newAmountPaid = parseFloat(props.information.values.currentAmountPaid) + parseFloat(_number.value);
+        let thisDebt = props.information.values;
+        let newBalance;
+        let newAmountPaid;
+        let interestPaidAmount;
+        if(thisDebt.interest){
+            let newInterestAmount = thisDebt.interestRate / thisDebt.months * (thisDebt.totalDebtAmount - thisDebt.currentAmountPaid);
+            newBalance = parseFloat(thisDebt.currentBalance) - parseFloat(_number.value - newInterestAmount);
+            newAmountPaid = parseFloat(thisDebt.currentAmountPaid) + parseFloat(_number.value - newInterestAmount);
+            interestPaidAmount = newInterestAmount.toFixed(2);
+        } else {
+            newBalance = parseFloat(thisDebt.currentBalance) - parseFloat(_number.value);
+            newAmountPaid = parseFloat(thisDebt.currentAmountPaid) + parseFloat(_number.value);
+            interestPaidAmount = null;
+        }
         let newPayment;
         let num;
-        if(props.information.values.payments){
-            num = parseInt(props.information.values.payments.length);
-            newPayment = {amount: _number.value, timeStamp: Date.now()}
+        if(thisDebt.payments){
+            num = parseInt(thisDebt.payments.length);
+            newPayment = {amount: _number.value, timeStamp: Date.now(), interestPaid: interestPaidAmount}
         } else {
             num = 0;
-            newPayment = {amount: _number.value, timeStamp: Date.now()}
+            newPayment = {amount: _number.value, timeStamp: Date.now(), interestPaid: interestPaidAmount}
         }
-        firebase.database().ref(`users/${user}/debts/${props.information.id}`).update({currentAmountPaid: newAmountPaid, totalDebtAmount: newBalance, timeStamp: Date.now()}).catch(error => {
+        firebase.database().ref(`users/${user}/debts/${props.information.id}`).update({currentAmountPaid: newAmountPaid.toFixed(2), currentBalance: newBalance.toFixed(2), timeStamp: Date.now()}).catch(error => {
             console.log(error)
         })
         firebase.database().ref(`users/${user}/debts/${props.information.id}/payments/${num}`).set(newPayment).catch(error => {
