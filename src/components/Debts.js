@@ -9,7 +9,7 @@ import DebtPaymentHistory from './DebtPaymentHistory';
 function Debts(props){
 
     const [addDebtForm, setDebtForm] = useState(false);
-    const [showDebt, setShowDebt] = useState(true);
+    const [showDebt, setShowDebt] = useState(false);
     const [editDebtForm, setEditForm] = useState({"state": false, information: null});
     const [debtPaymentForm, setDebtPaymentForm] = useState({"state": false, information: null});
 
