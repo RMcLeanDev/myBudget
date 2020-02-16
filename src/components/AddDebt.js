@@ -18,9 +18,9 @@ function AddDebt(props){
     let placeholderForMonthYear;
 
     if(monthYear === "monthSelection"){
-        placeholderForMonthYear = "Months"
+        placeholderForMonthYear = "ex: 24"
     } else {
-        placeholderForMonthYear = "Years"
+        placeholderForMonthYear = "ex: 2"
     }
 
     function sendDebt(e){
@@ -55,7 +55,10 @@ function AddDebt(props){
 
     if(checkInterest){
         checkedInterest = <div>
-            <input required type="number" min="0" step="any" placeholder="Interest Rate" ref={value => {_air = value}}/>
+            <p>Interest Rate</p>
+            <input required type="number" min="0" step="any" placeholder="ex: 4 = 4%" ref={value => {_air = value}}/>
+            <br />
+            <p>Duration of Loan</p>
             <select id="monthsOrYears" onChange={monthYearCheck} value={monthYear}>
                 <option value="monthSelection">Months</option>
                 <option value="yearSelection">Years</option>
@@ -93,12 +96,15 @@ function AddDebt(props){
                     </label>
                     <p>Interest</p>
                 </div>
-                <form onSubmit={sendDebt}>
-                    <input required placeholder="Name of Debt" ref={value => {_name = value}}/>
-                    <input required type="number" min="1" step="any" placeholder="Total Debt Amount" ref={value => {_total = value}}/>
-                    <input required type="number" min="0" step="any" placeholder="Current Balance" ref={value => {_currentBalance = value}}/>
+                <form onSubmit={sendDebt} className="inputSection">
+                    <p>Name of Debt</p>
+                    <input required placeholder="ex: Bank name" ref={value => {_name = value}}/>
+                    <p>Starting Debt Amount</p>
+                    <input required type="number" min="1" step="any" placeholder="ex: 5000" ref={value => {_total = value}}/>
+                    <p>Current Balance</p>
+                    <input required type="number" min="0" step="any" placeholder="ex: 4500" ref={value => {_currentBalance = value}}/>
                     {checkedInterest}
-                    <button type="submit">Enter</button>
+                    <button type="submit">Add Item</button>
                 </form>
             </div>
         </div>

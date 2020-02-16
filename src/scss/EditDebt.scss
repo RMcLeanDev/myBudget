@@ -2,6 +2,7 @@
     position: fixed;
     top: 50px;
     height: 100vh;
+    left: 0;
     width: 100vw;
     background-color: rgba(0,0,0,0.8);
     display: flex;
@@ -25,5 +26,41 @@
     .editDebtWindow{
         background-color: white;
         width: 80vw;
+        padding: 10px;
+        p{
+            font-weight: bold;
+        }
+        input{
+            font-size: 20px;
+            height: 20px;
+            width: 95%;
+            text-align: center;
+            border: none;
+            border-bottom: 2px solid black;
+            transition: .3s linear;
+            &:focus{
+                outline: none;
+                border-bottom: 4px solid teal;
+            }
+        }
+        button{
+            padding: 0 10px;
+            font-size: 30px;
+            margin-top: 25px;
+            background-color: teal;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: .2s linear;
+            &:hover{
+                background-color: limegreen;
+            }
+        }
+        .red{
+            background-color: red;
+            &:hover{
+                background-color: darkred;
+            }
+        }
     }
 }

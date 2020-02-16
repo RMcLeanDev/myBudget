@@ -17,9 +17,7 @@ function Budget(){
 
     return(
         <div>
-            <hr/>
             <h1>Budget Section</h1>
-            <hr />
             <form onSubmit={sendBudget}>
                 <input placeholder="some Information here" ref={value => {_info = value}}/>
                 <button type="submit">Enter</button>

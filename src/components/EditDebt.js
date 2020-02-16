@@ -13,7 +13,7 @@ function EditDebt(props){
     if(confirmation){
         confirmationScreen = <div>
             <h3>Are you sure you want to delete {props.information.debtItem.name}</h3>
-            <button onClick={deleteThisDebt}>Confirm</button>
+            <button onClick={deleteThisDebt} className="red">Confirm</button>
         </div>
     } else {
         confirmationScreen = null;
@@ -51,20 +51,17 @@ function EditDebt(props){
         <div className="editDebtContainer">
             <img src={require("../assets/x.png")} onClick={props.closeEditDebtForm}/>
             <div className="editDebtWindow">
+                <h1>Update {props.information.debtItem.name}</h1>
                 <form onSubmit={updateDebt}>
-                    <label>
-                        Starting Balance:
-                        <input type="number" placeholder={props.information.debtItem.totalDebtAmount} step="any" ref={value => {_startingBalance = value}}/>
-                    </label>
+                    <p>Starting Balance</p>
+                    <input type="number" placeholder={props.information.debtItem.totalDebtAmount} step="any" ref={value => {_startingBalance = value}}/>
                     <br />
-                    <label>
-                        Current Balance:
-                        <input type="number" placeholder={props.information.debtItem.currentBalance} step="any" ref={value => {_currentBalance = value}}/>
-                    </label>
+                    <p>Current Balance</p>
+                    <input type="number" placeholder={props.information.debtItem.currentBalance} step="any" ref={value => {_currentBalance = value}}/>
                     <br />
                     <button type="submit">Enter</button>
                 </form>
-                <button onClick={() => setConfirmation(true)}>Delete</button>
+                <button onClick={() => setConfirmation(true)} className="red">Delete</button>
                 {confirmationScreen}
             </div>
         </div>

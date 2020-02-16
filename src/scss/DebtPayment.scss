@@ -1,6 +1,7 @@
 .debtPaymentContainer{
     position: fixed;
     top: 50px;
+    left: 0;
     height: 100vh;
     width: 100vw;
     background-color: rgba(0,0,0,0.8);
@@ -24,6 +25,31 @@
     }
     .debtPaymentWindow{
         background-color: white;
+        padding: 10px;
         width: 80vw;
+        input{
+            border: none;
+            border-bottom: 2px solid black;
+            text-align: center;
+            font-size: 25px;
+            transition: .2s linear;
+            &:focus{
+                outline: none;
+                border-bottom: 4px solid teal;
+            }
+        }
+        button{
+            padding: 0 10px;
+            font-size: 30px;
+            margin-top: 25px;
+            background-color: teal;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: .2s linear;
+            &:hover{
+                background-color: limegreen;
+            }
+        }
     }
 }

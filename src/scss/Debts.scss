@@ -1,6 +1,11 @@
 @import './Mixin.scss';
 
 .debtContainer{
+    width: 98vw;
+    margin: auto;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-radius: 15px;
     .top{
         width: 90vw;
         margin: auto;
@@ -28,7 +33,11 @@
         }
     }
     .debts{
-        border-bottom: 1px solid black;
+        width: 95vw;
+        margin: auto;
+        border-radius: 30px;
+        box-shadow: 0px 0px 20px teal inset;
+        padding: 5px;
         .debtsInformation{
             display: flex;
             justify-content: space-around;

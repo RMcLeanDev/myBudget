@@ -47,8 +47,10 @@ function DebtPayment(props){
             <img src={require("../assets/x.png")} onClick={props.closeDebtPaymentForm}/>
             <div className="debtPaymentWindow">
                 <form onSubmit={debtPayment}>
-                    <input type="number" min="1" step="any" placeholder="Total Debt Amount" ref={value => {_number = value}}/>
-                    <button type="submit">Enter</button>
+                    <h1>Payment Amount</h1>
+                    <input type="number" min="1" step="any" placeholder="ex: 24 = $24" ref={value => {_number = value}}/>
+                    <br />
+                    <button type="submit">Send Payment</button>
                 </form>
             </div>
         </div>

@@ -93,7 +93,6 @@ function Debts(props){
 
     if(editDebtForm.state){
         editForm = <EditDebt information={editDebtForm.information} closeEditDebtForm={() => setEditForm({"state": false, information: null})}/>
-        console.log(editDebtForm)
     } else {
         editForm = null;
     }
@@ -106,7 +105,6 @@ function Debts(props){
 
     return(
         <div className="debtContainer">
-            <hr/>
             {debtForm}
             {editForm}
             {paymentForm}
