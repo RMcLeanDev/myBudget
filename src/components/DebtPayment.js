@@ -15,7 +15,7 @@ function DebtPayment(props){
         let newAmountPaid;
         let interestPaidAmount;
         if(thisDebt.interest){
-            let newInterestAmount = thisDebt.interestRate / thisDebt.months * (thisDebt.totalDebtAmount - thisDebt.currentAmountPaid);
+            let newInterestAmount = thisDebt.interestRate / 12 * (thisDebt.totalDebtAmount - thisDebt.currentAmountPaid);
             newBalance = parseFloat(thisDebt.currentBalance) - parseFloat(_number.value - newInterestAmount);
             newAmountPaid = parseFloat(thisDebt.currentAmountPaid) + parseFloat(_number.value - newInterestAmount);
             interestPaidAmount = newInterestAmount.toFixed(2);

@@ -40,7 +40,7 @@ function Debts(props){
                     bgColor = "rgba(30,255,0,0.6)"
                 }
                 if(debt.interest){
-                    let newInterestAmount = debt.interestRate / debt.months * (debt.totalDebtAmount - debt.currentAmountPaid);
+                    let newInterestAmount = debt.interestRate / 12 * (debt.totalDebtAmount - debt.currentAmountPaid);
                     // interest is (interest_rate/12 * balance);
                     interestChecked = <div>
                         <p>Your next payment will have: *${newInterestAmount.toFixed(2)} going towards interest!</p>
