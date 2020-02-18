@@ -1,0 +1,26 @@
+.top{
+    width: 90vw;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .addDebtButton{
+        height: 40px;
+        background-color: rgba(0,0,0,0.2);
+        border-radius: 40px;
+        cursor: pointer;
+        transition: 0.4s linear;
+        &:hover{
+            height: 50px;
+            border-radius: 50px;
+            background-color: rgba(0,0,0,0.6);
+        }
+    }
+    h2{
+        text-decoration: underline;
+        cursor: pointer;
+        &:hover{
+            color: teal;
+        }
+    }
+}
