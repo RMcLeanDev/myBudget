@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Header from './Header';
 import Budget from './Budget';
 import Debts from './Debts';
+import Savings from "./savings/Savings";
 
 function Home(props){
 
@@ -15,6 +16,7 @@ function Home(props){
       <h1>Welcome to my budget!</h1>
       <Debts debts={props.userInformation.debts}/>
       <Budget budget={props.userInformation.budget}/>
+      <Savings savings={props.userInformation.savings}/>
     </div>
   } else {
     display = <div className="loadingGif"><img src={require('../assets/loadingGif.gif')} /></div>
