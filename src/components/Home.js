@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Header from './Header';
-import Budget from './Budget';
-import Debts from './Debts';
+import Budget from './budget/Budget';
+import Debts from './debt/Debts';
 import Savings from "./savings/Savings";
 
 function Home(props){

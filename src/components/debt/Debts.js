@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import * as firebase from 'firebase';
-import '../scss/Debts.scss';
+import '../../scss/Debts.scss';
 import AddDebt from './AddDebt';
 import EditDebt from './EditDebt';
 import DebtPayment from './DebtPayment';
@@ -68,10 +67,10 @@ function Debts(props){
                             <p>${debt.currentAmountPaid}</p>
                         </div>
                         <h3 className="paymentButton" onClick={() => setDebtPaymentForm({"state": true, information: {id: debts, values: debt}})}>Make A Payment</h3>
-                        <img className="editButton" src={require('../assets/edit.png')} onClick={() => setEditForm({"state": true, information: {debtItem: debt, id: debts}})}/>
+                        <img className="editButton" src={require('../../assets/edit.png')} onClick={() => setEditForm({"state": true, information: {debtItem: debt, id: debts}})}/>
                     </div>
                     <div className="progress">
-                        <img src={require('../assets/progressBar.png')}/>
+                        <img src={require('../../assets/progressBar.png')}/>
                         <div className="colorBar" style={{"backgroundColor": bgColor, "width": `${num}%`}}/>
                     </div>
                     <div className="payments">
@@ -111,7 +110,7 @@ function Debts(props){
             <div className="top">
                 {showHide}
                 <h1>Debts</h1>
-                <img onClick={() => setDebtForm(true)} className="addDebtButton" src={require('../assets/plus.png')}/>
+                <img onClick={() => setDebtForm(true)} className="addDebtButton" src={require('../../assets/plus.png')}/>
             </div>
             {display}
         </div>

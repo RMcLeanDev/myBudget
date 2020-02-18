@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../scss/DebtPaymentHistory.scss';
+import '../../scss/DebtPaymentHistory.scss';
 
 function DebtPaymentHistory(props){
 

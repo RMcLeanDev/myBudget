@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import * as firebase from 'firebase';
 import { v4 } from 'uuid';
-import '../scss/AddDebts.scss';
+import '../../scss/AddDebts.scss';
 
 function AddDebt(props){
 
@@ -87,7 +87,7 @@ function AddDebt(props){
 
     return(
         <div className="addDebtContainer">
-            <img src={require("../assets/x.png")} onClick={props.closeDebtForm}/>
+            <img src={require("../../assets/x.png")} onClick={props.closeDebtForm}/>
             <div className="addDebtWindow">
                 <div className="interestCheck">
                     <label className="checkbox-label">

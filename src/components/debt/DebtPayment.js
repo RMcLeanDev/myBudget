@@ -1,5 +1,5 @@
 import React from 'react';
-import '../scss/DebtPayment.scss';
+import '../../scss/DebtPayment.scss';
 import * as firebase from 'firebase';
 
 function DebtPayment(props){
@@ -44,7 +44,7 @@ function DebtPayment(props){
 
     return(
         <div className="debtPaymentContainer">
-            <img src={require("../assets/x.png")} onClick={props.closeDebtPaymentForm}/>
+            <img src={require("../../assets/x.png")} onClick={props.closeDebtPaymentForm}/>
             <div className="debtPaymentWindow">
                 <form onSubmit={debtPayment}>
                     <h1>Payment Amount</h1>

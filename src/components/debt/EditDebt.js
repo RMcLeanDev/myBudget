@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import * as firebase from 'firebase';
-import '../scss/EditDebt.scss';
+import '../../scss/EditDebt.scss';
 
 function EditDebt(props){
 
@@ -49,7 +49,7 @@ function EditDebt(props){
 
     return(
         <div className="editDebtContainer">
-            <img src={require("../assets/x.png")} onClick={props.closeEditDebtForm}/>
+            <img src={require("../../assets/x.png")} onClick={props.closeEditDebtForm}/>
             <div className="editDebtWindow">
                 <h1>Update {props.information.debtItem.name}</h1>
                 <form onSubmit={updateDebt}>

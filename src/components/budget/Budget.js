@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import * as firebase from 'firebase';
-import { _instanceWithOptions } from 'firebase-functions/lib/providers/database';
 
 function Budget(){
 
