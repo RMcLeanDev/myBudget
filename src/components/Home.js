@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Header from './Header';
-import Budget from './budget/Budget';
-import Debts from './debt/Debts';
-import Savings from "./savings/Savings";
+import Budget from './budgetComponents/Budget';
+import Debts from './debtComponents/Debts';
+import Savings from "./savingsComponents/Savings";
 
 function Home(props){
 
