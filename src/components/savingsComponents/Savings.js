@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import '../../scss/Savings.scss';
+import AddSavings from './AddSavings';
 
 function Savings(props){
 
     let display;
     let showHide;
+    let savingsForm;
 
     const [showSavings, setShowSavings] = useState(false);
     const [addSavingsForm, setSavingsForm] = useState(false);
@@ -21,8 +23,15 @@ function Savings(props){
         showHide = <h2 onClick={() => setShowSavings(true)}>Show</h2>
     }
 
+    if(addSavingsForm){
+        savingsForm = <AddSavings />
+    } else {
+        savingsForm = null;
+    }
+
     return (
         <div>
+            {savingsForm}
             <div className="top">
                 {showHide}
                 <h1>Savings</h1>
