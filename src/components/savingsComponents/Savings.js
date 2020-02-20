@@ -24,7 +24,7 @@ function Savings(props){
     }
 
     if(addSavingsForm){
-        savingsForm = <AddSavings />
+        savingsForm = <AddSavings closeSavingsForm={() => setSavingsForm(false)}/>
     } else {
         savingsForm = null;
     }
