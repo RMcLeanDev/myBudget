@@ -2,6 +2,7 @@ import React from 'react';
 import * as firebase from 'firebase';
 import '../../scss/AddSavings.scss';
 import '../../scss/CloseButton.scss';
+import {v4} from 'uuid';
 
 function AddSavings(props){
 
@@ -12,7 +13,7 @@ function AddSavings(props){
     function addNewSavings(e){
         e.preventDefault();
         let user = firebase.auth().currentUser.uid;
-        firebase.database().ref(`users/${user}/savings/${_name.value}`).set({name: _name.value, targetGoal: _target.value, currentSaved: _current.value}).catch(error => {
+        firebase.database().ref(`users/${user}/savings/${v4()}`).set({name: _name.value, targetGoal: _target.value, currentSaved: _current.value}).catch(error => {
             console.log(error);
         })
     }

@@ -11,10 +11,19 @@ function Savings(props){
     const [showSavings, setShowSavings] = useState(false);
     const [addSavingsForm, setSavingsForm] = useState(false);
 
-    if(props.savings){
-        display = <h3>true</h3>
-    } else {
-        display = <h3>Add your first savings item!</h3>
+    if(showSavings){
+        if(props.savings){
+            display = Object.keys(props.savings).map(savings => {
+                let saving = props.savings[savings]
+                return <div key={savings}>
+                    <h2>{saving.name}</h2>
+                    <h2>{saving.currentSaved}</h2>
+                    <h2>{saving.targetGoal}</h2>
+                </div>
+            })
+        } else {
+            display = <h3>Add your first savings item!</h3>
+        }
     }
 
     if(showSavings){
