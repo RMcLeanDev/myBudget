@@ -27,9 +27,9 @@ function AddSavings(props){
                     <p>Name</p>
                     <input placeholder="ex: car" required ref={value => {_name = value}}/>
                     <p>Target Saving Goal</p>
-                    <input value="0" ref={value => {_target = value}}/>
+                    <input value="0" step="any" ref={value => {_target = value}}/>
                     <p>Current Amount Saved Up</p>
-                    <input value="0" ref={value => {_current = value}} />
+                    <input value="0" step="any" ref={value => {_current = value}} />
                     <br />
                     <button type="submit">Add New Saving Plan</button>
                 </form>

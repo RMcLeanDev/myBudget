@@ -22,6 +22,8 @@ function Savings(props){
                     <h2>{saving.targetGoal}</h2>
                     <h2>Current Saved</h2>
                     <h2>{saving.currentSaved}</h2>
+                    <h3 className="paymentButton" >Add Money</h3>
+                    <img className="editButton" src={require('../../assets/edit.png')} />
                 </div>
             })
         } else {
