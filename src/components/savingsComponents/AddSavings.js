@@ -25,11 +25,11 @@ function AddSavings(props){
                 <h1>Add new savings item</h1>
                 <form onSubmit={addNewSavings}>
                     <p>Name</p>
-                    <input placeholder="ex: car" ref={value => {_name = value}}/>
+                    <input placeholder="ex: car" required ref={value => {_name = value}}/>
                     <p>Target Saving Goal</p>
-                    <input placeholder="ex: 5000 = $5000" ref={value => {_target = value}}/>
+                    <input value="0" ref={value => {_target = value}}/>
                     <p>Current Amount Saved Up</p>
-                    <input placeholder="ex: 50 = $50" ref={value => {_current = value}} />
+                    <input value="0" ref={value => {_current = value}} />
                     <br />
                     <button type="submit">Add New Saving Plan</button>
                 </form>

@@ -16,9 +16,12 @@ function Savings(props){
             display = Object.keys(props.savings).map(savings => {
                 let saving = props.savings[savings]
                 return <div key={savings}>
+                    <h2>Name</h2>
                     <h2>{saving.name}</h2>
-                    <h2>{saving.currentSaved}</h2>
+                    <h2>Target</h2>
                     <h2>{saving.targetGoal}</h2>
+                    <h2>Current Saved</h2>
+                    <h2>{saving.currentSaved}</h2>
                 </div>
             })
         } else {
