@@ -92,7 +92,7 @@ function AddDebt(props){
             <div className="addDebtWindow">
                 <div className="interestCheck">
                     <label className="checkbox-label">
-                        <input type="checkbox" checked={checkInterest} onClick={interestBox}/>
+                        <input type="checkbox" defaultChecked={checkInterest} onClick={interestBox}/>
                         <span className="checkbox-custom rectangular"></span>
                     </label>
                     <p>Interest</p>

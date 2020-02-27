@@ -1,15 +1,18 @@
 import React, {useState} from "react";
 import '../../scss/Savings.scss';
 import AddSavings from './AddSavings';
+import SavingsPayment from './SavingsPayment';
 
 function Savings(props){
 
     let display;
     let showHide;
     let savingsForm;
+    let savingsPayment;
 
     const [showSavings, setShowSavings] = useState(false);
     const [addSavingsForm, setSavingsForm] = useState(false);
+    const [savingsPaeymntForm, setSavingsPaymentForm] = useState({'state': false, information: null})
 
     if(showSavings){
         if(props.savings){
@@ -22,7 +25,7 @@ function Savings(props){
                     <h2>{saving.targetGoal}</h2>
                     <h2>Current Saved</h2>
                     <h2>{saving.currentSaved}</h2>
-                    <h3 className="paymentButton" >Add Money</h3>
+                    <h3 className="paymentButton" onClick={() => setSavingsPaymentForm({'state': true, information: {id: savings, information: saving}})}>Add Money</h3>
                     <img className="editButton" src={require('../../assets/edit.png')} />
                 </div>
             })
@@ -43,9 +46,16 @@ function Savings(props){
         savingsForm = null;
     }
 
+    if(savingsPaeymntForm){
+        console.log('true')
+    } else {
+        savingsPayment= null;
+    }
+
     return (
         <div>
             {savingsForm}
+            {savingsPayment}
             <div className="top">
                 {showHide}
                 <h1>Savings</h1>
