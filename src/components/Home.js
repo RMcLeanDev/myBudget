@@ -4,6 +4,7 @@ import Header from './Header';
 import Budget from './budgetComponents/Budget';
 import Debts from './debtComponents/Debts';
 import Savings from "./savingsComponents/Savings";
+import Notification from './Notification';
 
 function Home(props){
 
@@ -12,6 +13,7 @@ function Home(props){
   if(props.userInformation){
     display = 
     <div>
+      <Notification userInformation={props.userInformation}/>
       <Header userInformation={props.userInformation}/>
       <h1>Welcome to my budget!</h1>
       <Debts debts={props.userInformation.debts}/>
