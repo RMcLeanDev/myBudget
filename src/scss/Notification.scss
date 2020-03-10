@@ -1,3 +1,5 @@
+@import './Mixin.scss';
+
 .complete{
     background-color: limegreen;
 }
@@ -27,11 +29,14 @@ li{
     align-items: center;
     .information{
         width: 80vw;
-        max-height: 70vh;
+        max-height: 80vh;
         padding: 20px;
         border-radius: 15px;
         background-color: white;
         overflow: auto;
+        @include mQ(775px){
+            max-height: 60vh;
+        }
     }
     .close{
         font-size: 25px;
