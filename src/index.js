@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import {createStore, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
@@ -14,11 +14,11 @@ export {store};
 
 const render = (Component) => {
   ReactDOM.render(
-    <HashRouter >
+    <BrowserRouter >
       <Provider store={store}>
         <Component />
       </Provider>
-    </HashRouter>,
+    </BrowserRouter>,
     document.getElementById('root')
   );
 }
