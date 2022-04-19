@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <h1>Click the button:</h1>
+      <h2>Now open the console log :D</h2>
       <button onClick={() => store.dispatch(testFunction())}>TEST</button>
     </div>
   );
