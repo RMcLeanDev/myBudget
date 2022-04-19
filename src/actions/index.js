@@ -10,3 +10,4 @@ const {types, firebaseConfig} = constants;
 export const testFunction = () => ({
     type: types.TEST_FUNCTION
   })
+  

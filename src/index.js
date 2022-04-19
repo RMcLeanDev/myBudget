@@ -14,7 +14,7 @@ export {store};
 
 const render = (Component) => {
   ReactDOM.render(
-    <HashRouter>
+    <HashRouter >
       <Provider store={store}>
         <Component />
       </Provider>
