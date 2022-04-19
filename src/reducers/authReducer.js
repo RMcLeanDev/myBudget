@@ -7,12 +7,10 @@ const authReducer = (state = authState, action) => {
       case types.AUTH_USER_TRUE:
         newState = state;
           newState = true;
-          console.log("hi")
         return newState;
       case types.AUTH_USER_FALSE:
         newState = state;
           newState = false;
-          console.log("nay")
         return newState;
       default:
         return state;

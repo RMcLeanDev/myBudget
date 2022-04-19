@@ -1,20 +1,29 @@
 import React from 'react';
 import './App.scss';
 import { store } from './';
-import {testFunction} from './actions/index';
-import { Switch, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import SignIn from './components/SignIn'
 import {connect} from 'react-redux';
+import Home from './components/Home';
+import LoadingAnimation from './components/LoadingAnimation';
 
 function App(props) {
 
   console.log(props)
-  
+
   return (
     <div className="App">
-      <h1>Click the button:</h1>
-      <h2>Now open the console log :D</h2>
-      <button onClick={() => store.dispatch(testFunction())}>TEST</button>
+      {props.authUserState ? 
+      <div>
+        <Routes>
+          <Route exact path="/" element={<Home />}/>
+        </Routes>
+      </div>
+      : props.authUserState === false ?
+      <div>
+        <SignIn/>
+      </div> 
+      : props.authUserState === null ? <LoadingAnimation/> : null}
     </div>
   );
 }
