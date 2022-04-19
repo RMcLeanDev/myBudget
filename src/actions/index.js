@@ -1,13 +1,30 @@
 import constants from './../constants';
 import firebase from 'firebase/compat/app';
+import {store} from './../index';
 import "firebase/compat/auth";
 import "firebase/compat/database";
 
 const {types, firebaseConfig} = constants;
 
-// firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if(user){
+    store.dispatch(authUserTrue());
+  } else {
+    store.dispatch(authUserFalse());
+  }
+})
 
 export const testFunction = () => ({
-    type: types.TEST_FUNCTION
-  })
+  type: types.TEST_FUNCTION
+})
+
+export const authUserTrue = () => ({
+  type: types.AUTH_USER_TRUE
+})
+
+export const authUserFalse = () => ({
+  type: types.AUTH_USER_FALSE
+})
   

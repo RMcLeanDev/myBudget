@@ -2,8 +2,14 @@ import React from 'react';
 import './App.scss';
 import { store } from './';
 import {testFunction} from './actions/index';
+import { Switch, Route } from 'react-router-dom';
+import SignIn from './components/SignIn'
+import {connect} from 'react-redux';
 
-function App() {
+function App(props) {
+
+  console.log(props)
+  
   return (
     <div className="App">
       <h1>Click the button:</h1>
@@ -13,4 +19,7 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  authUserState: state.authState
+})
+export default connect(mapStateToProps)(App);
