@@ -2,7 +2,7 @@ import React from 'react';
 
 function LoadingAnimation(){
     return(
-        <div>Loading Animation Here...</div>
+        <div className="ldscontainer"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
     )
 }
 
