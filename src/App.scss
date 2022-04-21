@@ -130,7 +130,8 @@
       border-radius: 0;
     }
     button{
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      margin-top: 20px;
       border: 2px solid #6138f5;
       background-color: #6138f5;
       font-weight: bold;
@@ -144,10 +145,29 @@
     hr{
       width: 90%;
     }
-    p{
-      text-align: start;
-      margin-left: 5%;
-      font-size: 15px;
+    .createAccount{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      cursor: pointer;
+      .rightArrow{
+        color: #6138f5;
+        font-size: 25px;
+        margin-left: 25px;
+      }
+      p{
+        text-align: start;
+        font-size: 20px;
+      }
+    }
+    #togglePassword{
+      cursor: pointer;
+      margin-left: -31.25px;
+      margin-top: -10px;
+      font-size: 25px;
+      z-index: 1;
     }
   }
 }
+
