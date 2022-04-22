@@ -23,7 +23,7 @@ function App(props) {
       : props.authUserState === false ?
       <Routes>
         <Route exact path="/" element={<SignIn/>} />
-        <Route path="signup" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp/>} />
       </Routes> 
       : props.authUserState === null ? <LoadingAnimation/> : null}
     </div>

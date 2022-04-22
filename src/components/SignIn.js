@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function SignIn(){
 
@@ -12,7 +12,7 @@ function SignIn(){
         console.log(email, password)
     }
     return(
-        <div className="signInComponent">
+        <div className="signComponents">
             <div className="mainBorder">
                 <h1>Sign in</h1>
                 <form onSubmit={signIn}>
@@ -20,11 +20,11 @@ function SignIn(){
                     <input placeholder="Password" type={viewPass ? "password":"text"} value={password} onChange={e => setPassword(e.target.value)}/>
                     <i className={viewPass ? "far fa-eye-slash": "far fa-eye"} id="togglePassword" onClick={() => setViewPass(!viewPass)}></i>
                     <br/>
-                    <button type="submit">Lets Go</button>
+                    <button className="signButton" type="submit">Lets Go</button>
                 </form>
                 <hr/>
                 <div className="createAccount">
-                    <NavLink to="/signup">Create an Account!</NavLink>
+                    <Link to="signup">Create an Account!</Link>
                     <i class="fa-solid fa-square-caret-right rightArrow"></i>
                 </div>
             </div>
