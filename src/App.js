@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.scss';
-import { store } from './';
 import { Routes, Route } from 'react-router-dom';
 import SignIn from './components/SignIn'
 import {connect} from 'react-redux';
@@ -9,8 +8,6 @@ import LoadingAnimation from './components/LoadingAnimation';
 import SignUp from './components/SignUp';
 
 function App(props) {
-
-  console.log(props)
 
   return (
     <div className="App">
