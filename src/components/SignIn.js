@@ -24,8 +24,7 @@ function SignIn(){
                 </form>
                 <hr/>
                 <div className="createAccount">
-                    <Link to="signup">Create an Account!</Link>
-                    <i class="fa-solid fa-square-caret-right rightArrow"></i>
+                    <Link to="signup">Create an Account!<i class="fa-solid fa-square-caret-right rightArrow"></i></Link>
                 </div>
             </div>
         </div>

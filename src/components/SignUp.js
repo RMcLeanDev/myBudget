@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 
 function SignUp(){
 
@@ -26,6 +27,10 @@ function SignUp(){
                 {pass1 === pass2 ? "":<p>Passwords don't match</p>}
                 <button className="signButton">Create!</button>
             </form>
+            <hr/>
+            <div className="createAccount">
+                <Link to="/">Already have a account? Click Here!<i class="fa-solid fa-square-caret-right rightArrow"></i></Link>
+            </div>
         </div>
     )
 }
