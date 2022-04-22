@@ -24,7 +24,7 @@ function SignUp(){
                 <input type={viewPass ? "password":"text"} value={pass1} onChange={e => setPass1(e.target.value)} placeholder="Password" />
                 <input type={viewPass ? "password":"text"} value={pass2} onChange={e => setPass2(e.target.value)} placeholder="Verify Password" />
                 <i className={viewPass ? "far fa-eye-slash": "far fa-eye"} id="togglePassword" onClick={() => setViewPass(!viewPass)}></i>
-                {pass1 === pass2 ? "":<p>Passwords don't match</p>}
+                {pass1 === pass2 ? null:<p>Passwords don't match</p>}
                 <button className="signButton">Create!</button>
             </form>
             <hr/>

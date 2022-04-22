@@ -14,7 +14,8 @@ function SignIn(){
     return(
         <div className="signComponents">
             <div className="mainBorder">
-                <h1>Sign in</h1>
+                <h1>My Budget!</h1>
+                <hr/>
                 <form onSubmit={signIn}>
                     <input placeholder="Email" type="email" value={email} onChange={e => setEmail(e.target.value)}/>
                     <input placeholder="Password" type={viewPass ? "password":"text"} value={password} onChange={e => setPassword(e.target.value)}/>

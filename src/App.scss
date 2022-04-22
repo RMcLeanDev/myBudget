@@ -97,7 +97,7 @@
 
 .signComponents{
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,6 +125,7 @@
   }
   hr{
     width: 90%;
+    margin-bottom: 15px;
   }
   .createAccount{
     display: flex;
