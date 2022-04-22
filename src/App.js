@@ -6,6 +6,7 @@ import SignIn from './components/SignIn'
 import {connect} from 'react-redux';
 import Home from './components/Home';
 import LoadingAnimation from './components/LoadingAnimation';
+import SignUp from './components/SignUp';
 
 function App(props) {
 
@@ -20,9 +21,10 @@ function App(props) {
         </Routes>
       </div>
       : props.authUserState === false ?
-      <div>
-        <SignIn/>
-      </div> 
+      <Routes>
+        <Route exact path="/" element={<SignIn/>} />
+        <Route path="signup" element={<SignUp />} />
+      </Routes> 
       : props.authUserState === null ? <LoadingAnimation/> : null}
     </div>
   );

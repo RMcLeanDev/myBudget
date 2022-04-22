@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { NavLink } from 'react-router-dom';
 
 function SignIn(){
 
@@ -23,7 +24,7 @@ function SignIn(){
                 </form>
                 <hr/>
                 <div className="createAccount">
-                    <p>Create an Account!</p>
+                    <NavLink to="/signup">Create an Account!</NavLink>
                     <i class="fa-solid fa-square-caret-right rightArrow"></i>
                 </div>
             </div>
