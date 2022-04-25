@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import LoadingAnimation from './LoadingAnimation';
 import firebase from 'firebase/compat/app';
 import "firebase/auth";
+import { AuthErrorCodes } from 'firebase/auth';
 
 function SignIn(){
 
@@ -19,9 +20,13 @@ function SignIn(){
             console.log(user.user)
         })
         .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
             console.log(error.code + ": " + error.message)
+            if(error.code.includes("user-not-found")){
+                setError("noUserFound")
+            } else if(error.code.includes("wrong-password")) {
+                setError("incorrectPassword")
+            }
+            setLoading(false)
         });
     }
     return(
@@ -31,7 +36,9 @@ function SignIn(){
                 <h1>My Budget!</h1>
                 <hr/>
                 <form onSubmit={signIn}>
-                    <input required placeholder="Email" type="email" value={email} onChange={e => setEmail(e.target.value)}/>
+                    <p style={{backgroundColor: 'red', width: '80%', margin: 'auto'}}>{error === "noUserFound" ? "Their is no user with that email.":null}</p>
+                    <input required placeholder="Email" type="email" value={email} onChange={e => {setEmail(e.target.value);
+                    setError(null)}}/>
                     <input required placeholder="Password" type={viewPass ? "password":"text"} value={password} onChange={e => setPassword(e.target.value)}/>
                     <i className={viewPass ? "far fa-eye-slash": "far fa-eye"} id="togglePassword" onClick={() => setViewPass(!viewPass)}></i>
                     <br/>
