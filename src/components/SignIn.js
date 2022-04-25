@@ -36,11 +36,12 @@ function SignIn(){
                 <h1>My Budget!</h1>
                 <hr/>
                 <form onSubmit={signIn}>
-                    <p style={{backgroundColor: 'red', width: '80%', margin: 'auto'}}>{error === "noUserFound" ? "Their is no user with that email.":null}</p>
+                    <p style={{fontWeight: 'bold',color: 'red', margin: 'auto'}}>{error === "noUserFound" ? "There is no user with that email.":null}</p>
                     <input required placeholder="Email" type="email" value={email} onChange={e => {setEmail(e.target.value);
                     setError(null)}}/>
-                    <input required placeholder="Password" type={viewPass ? "password":"text"} value={password} onChange={e => setPassword(e.target.value)}/>
+                    <input required placeholder="Password" type={viewPass ? "password":"text"} value={password} onChange={e => {setPassword(e.target.value); setError(null)}}/>
                     <i className={viewPass ? "far fa-eye-slash": "far fa-eye"} id="togglePassword" onClick={() => setViewPass(!viewPass)}></i>
+                    <p style={{fontWeight: 'bold',color: 'red', width: '80%', margin: 'auto'}}>{error === "incorrectPassword" ? "Password is incorrect. Please try again.":null}</p>
                     <br/>
                     <button className="signButton" type="submit">Lets Go</button>
                 </form>
