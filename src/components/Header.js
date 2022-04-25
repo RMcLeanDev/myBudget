@@ -7,6 +7,7 @@ function Header(){
     return(
         <div className="header">
             <div className="left">
+                <p>Developed and Maintend by:</p>
             </div>
             <div className={`right ${showHide ? "change":null}`} onClick={() => setShowHide(!showHide)}>
                 <div className="line1"/>
