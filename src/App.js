@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import Home from './components/Home';
 import LoadingAnimation from './components/LoadingAnimation';
 import SignUp from './components/SignUp';
+import Header from './components/Header';
 
 function App(props) {
 
@@ -13,6 +14,7 @@ function App(props) {
     <div className="App">
       {props.authUserState ? 
       <div>
+        <Header />
         <Routes>
           <Route exact path="/" element={<Home />}/>
         </Routes>
