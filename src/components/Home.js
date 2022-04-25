@@ -11,31 +11,6 @@ function Home(){
         <div className="homeComponent">
             <h1>Home component</h1>
             <button onClick={signOut}>Sign out</button>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1><h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
-            <h1>Home component</h1>
         </div>
     )
 }
