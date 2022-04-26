@@ -43,6 +43,30 @@
       transform: rotate(45deg) translate(-8px, -5px);
     }
   }
+  .headerMenu{
+    position: fixed;
+    height: calc(100vh - 61px);
+    width: 0px;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    background-color: white;
+    transition: 0.5s linear;
+    border-left: 2px solid #6138f5;
+    color: #6138f5;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .showMenu{
+    width: 150px;
+  }
+  .signoutButton{
+    border-top: 1px solid gray;
+    width: 100%;
+    cursor: pointer;
+  }
 }
 
 .App-header {
