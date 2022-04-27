@@ -7,6 +7,7 @@ import Home from './components/Home';
 import LoadingAnimation from './components/LoadingAnimation';
 import SignUp from './components/SignUp';
 import Header from './components/Header';
+import Settings from './components/Settings';
 
 function App(props) {
 
@@ -17,6 +18,7 @@ function App(props) {
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />}/>
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
       : props.authUserState === false ?
