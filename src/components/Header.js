@@ -1,16 +1,10 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
-import firebase from 'firebase/compat/app';
-import "firebase/auth";
 
 function Header(){
 
     const[showHide, setShowHide] = useState(false);
     const[active, setActive] = useState("home")
-
-    function signOut(){
-        firebase.auth().signOut()
-    }
 
     return(
         <div className="header">

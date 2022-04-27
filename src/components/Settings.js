@@ -1,9 +1,16 @@
 import React from 'react';
+import firebase from 'firebase/compat/app';
+import "firebase/auth";
 
 function Settings(){
+
+    function signOut(){
+        firebase.auth().signOut()
+    }
+
     return(
         <div>
-            <h1>Settings Components</h1>
+            <button onClick={signOut}>Log Out</button>
         </div>
     )
 }
