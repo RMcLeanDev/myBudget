@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import LoadingAnimation from './LoadingAnimation';
 import firebase from 'firebase/compat/app';
 import "firebase/auth";
-import { AuthErrorCodes } from 'firebase/auth';
 
 function SignIn(){
 

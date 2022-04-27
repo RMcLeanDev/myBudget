@@ -8,64 +8,39 @@
   bottom: 0;
   width: 100%;
   height: 60px;
-  border-top: 1px solid black;
+  border-top: 1px solid rgba(97, 56, 245, 0.4);
   display: flex;
-  background-color: #6138f5;
-  justify-content: center;
+  background-color: white;
+  justify-content: space-around;
   align-items: center;
   color: white;
   display: flex;
-  justify-content: space-between;
-  .left{
-    margin-left: 15px;
-  }
-  .right{
-    margin-right: 15px;
-    cursor: pointer;
-    .line1, .line2, .line3{
-      width: 50px;
-      height: 5px;
-      background-color: white;
-      margin-bottom: 5px;
-      transition: 0.5s linear;
-    }
-  }
-  .change{
-    .line1{
-      transform: rotate(-45deg) translate(-9px, 6px);
-    }
-    .line2{
-      width: 0px;
-      opacity: 0;
-    }
-    .line3{
-      transform: rotate(45deg) translate(-8px, -5px);
-    }
-  }
-  .headerMenu{
-    position: fixed;
-    height: calc(100vh - 61px);
-    width: 0px;
-    overflow: hidden;
-    top: 0;
-    right: 0;
-    background-color: white;
-    transition: 0.5s linear;
-    color: #6138f5;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    border-left: 0px solid #6138f5;
-  }
-  .showMenu{
-    width: 150px;
-    border-left: 2px solid #6138f5;
-  }
-  .signoutButton{
-    border-top: 1px solid gray;
+  .tabItem{
+    height: 100%;
     width: 100%;
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
+  .settingIcon{
+    font-size: 25px;
+    color: black;
+    margin-left: 50px;
+  }
+  p{
+    margin: 0;
+  }
+  .vr{
+    width: 2px;
+    background-color: lightgray;
+    height: 100%;
+  }
+  .active{
+    background-color: rgba(97, 56, 245, 0.6);
+    padding: 5px;
+    border-radius: 5px;
   }
 }
 
