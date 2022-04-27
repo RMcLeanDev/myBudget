@@ -10,7 +10,14 @@ firebase.initializeApp(firebaseConfig);
 
 firebase.auth().onAuthStateChanged(function(user) {
   if(user){
-    store.dispatch(authUserTrue());
+    console.log(user.uid)
+    firebase.database().ref(`users/${user.uid}`).on('value', snapshot => {
+      if(snapshot.val()){
+        store.dispatch(authUserTrue());
+      } else {
+        firebase.database().ref(`users/${user.uid}`).set({"status": "active"})
+      }
+    })
   } else {
     store.dispatch(authUserFalse());
   }

@@ -1,21 +1,38 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import firebase from 'firebase/compat/app';
+import { useNavigate } from 'react-router-dom';
+import LoadingAnimation from './LoadingAnimation';
+import "firebase/auth";
+import "firebase/compat/database";
 
 function SignUp(){
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("")
-    const [pass1, setPass1] = useState("")
-    const [pass2, setPass2] = useState("")
-    const [viewPass, setViewPass] = useState(true)
+    const [email, setEmail] = useState("");
+    const [pass1, setPass1] = useState("");
+    const [pass2, setPass2] = useState("");
+    const [viewPass, setViewPass] = useState(true);
+    const [loading, setLoading] = useState(false);
+    let navigate = useNavigate()
 
     function createAccount(e){
         e.preventDefault()
+        setLoading(true)
+        firebase.auth().createUserWithEmailAndPassword(email, pass2).then((userCredential) => {
+            let user = userCredential.user;
+            firebase.database().ref(`users/${user.uid}`).set({"status": "active", "name": firstName + " " + lastName, "email": email, "firstName": firstName, "lastName": lastName, "id":user.uid})
+            navigate("/")
+        })
+        .catch((error) => {
+            console.log(error)
+        });
     }
 
     return(
         <div className="mainBorder">
+            {loading ? <LoadingAnimation />:null}
             <h1>Lets create a Account!</h1>
             <form onSubmit={createAccount}>
                 <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} placeholder="First Name"/>
