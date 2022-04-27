@@ -1,8 +1,8 @@
 import React from 'react';
 
-function LoadingAnimation(){
+function LoadingAnimation(props){
     return(
-        <div className="ldscontainer"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
+        <div className={`ldscontainer ${props.noBg ? "noBg":null}`}><div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
     )
 }
 
