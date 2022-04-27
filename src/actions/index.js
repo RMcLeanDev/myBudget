@@ -15,7 +15,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       if(snapshot.val()){
         store.dispatch(authUserTrue());
       } else {
-        firebase.database().ref(`users/${user.uid}`).set({"status": "active"})
+        
       }
     })
   } else {
