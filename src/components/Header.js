@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 function Header(){
 
-    const[showHide, setShowHide] = useState(false);
     const[active, setActive] = useState("home")
 
     return(
