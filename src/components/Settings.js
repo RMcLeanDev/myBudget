@@ -21,7 +21,9 @@ function Settings(props){
                 <Link to='/messages'>
                     <i class="fa-solid fa-inbox"></i>
                     <p>Messages</p>
-                    <p className={props.messages ? "unreadBadge":"noBadge"}>2</p>
+                    {
+                        props.messages ? props.messages.unreadMessages > 0 ? <p className="unreadBadge">{props.messages.unreadMessages}</p> : null : null
+                    }
                 </Link>
             </div>
             <div className="toMessages">
