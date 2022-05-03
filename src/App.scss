@@ -241,6 +241,7 @@
     }
     &:hover{
       background-color: #6138f5;
+      cursor: pointer;
     }
     .unreadBadge{
       display: flex;
@@ -250,7 +251,7 @@
       background-color: red;
       width: 20px;
       height: 20px;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: bold;
       border-radius: 100%;
       position: absolute;
