@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 import { useNavigate } from 'react-router-dom';
 import LoadingAnimation from './LoadingAnimation';
+import {v4} from 'uuid';
 import "firebase/auth";
 import "firebase/compat/database";
 
@@ -20,9 +21,11 @@ function SignUp(){
     function createAccount(e){
         e.preventDefault()
         setLoading(true)
+        let messageId = v4()
+        let messageText = `Welcome to "My Budget" ${firstName + " " + lastName}. My name is Ryan McLean, I am the developer and designer of this app. This message section is for if you have any questions. More importantly though this section is for any ideas or feedback you have about the app. I will respond as soon as I can and welcome all feedback or ideas you may have. Thank you!`
         firebase.auth().createUserWithEmailAndPassword(email, pass2).then((userCredential) => {
             let user = userCredential.user;
-            firebase.database().ref(`users/${user.uid}`).set({"status": "active", "name": firstName + " " + lastName, "email": email, "firstName": firstName, "lastName": lastName, "id":user.uid})
+            firebase.database().ref(`users/${user.uid}`).set({"status": "active", "name": firstName + " " + lastName, "email": email, "firstName": firstName, "lastName": lastName, "id":user.uid, messages:{unreadMessages:1, [messageId]: {"text":messageText, from: process.env.REACT_APP_DEVELOPER_ID, status: "unread"}}});
             navigate("/")
         })
         .catch((error) => {
