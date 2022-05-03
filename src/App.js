@@ -8,6 +8,7 @@ import LoadingAnimation from './components/LoadingAnimation';
 import SignUp from './components/SignUp';
 import Header from './components/Header';
 import Settings from './components/Settings';
+import Messaging from './components/messaging/Messaging';
 
 function App(props) {
 
@@ -18,7 +19,8 @@ function App(props) {
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />}/>
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/settings" element={<Settings messages={props.userInfo.info.messages}/>} />
+          <Route path='/messages' element={<Messaging messages={props.userInfo.info.messages}/>} />
         </Routes>
       </div>
       : props.authUserState === false ?
@@ -32,6 +34,7 @@ function App(props) {
 }
 
 const mapStateToProps = state => ({
-  authUserState: state.authState
+  authUserState: state.authState,
+  userInfo: state.userInfo
 })
 export default connect(mapStateToProps)(App);

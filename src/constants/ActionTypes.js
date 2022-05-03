@@ -1,3 +1,5 @@
 export const TEST_FUNCTION = 'TEST_FUNCTION';
 export const AUTH_USER_TRUE = 'AUTH_USER_TRUE';
 export const AUTH_USER_FALSE = 'AUTH_USER_FALSE';
+export const SET_USER_INFO = 'SET_USER_INFO';
+export const DUMP_USER_INFO = 'DUMP_USER_INFO';

@@ -218,3 +218,44 @@
     text-shadow: 2px 2px 2px black;
   }
 }
+
+.toMessages{
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid lightgray;
+  margin-top: 5px;
+  a{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    i{
+      margin-right: 10px;
+      font-size: 25px;
+    }
+    &:hover{
+      background-color: #6138f5;
+    }
+    .unreadBadge{
+      color: black;
+      background-color: red;
+      width: 16px;
+      height: 16px;
+      font-size: 13px;
+      font-weight: bold;
+      border-radius: 100%;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+    .noBadge{
+      display: none;
+    }
+  }
+}
