@@ -19,7 +19,6 @@ function SignIn(){
             console.log(user.user)
         })
         .catch((error) => {
-            console.log(error.code + ": " + error.message)
             if(error.code.includes("user-not-found")){
                 setError("noUserFound")
             } else if(error.code.includes("wrong-password")) {

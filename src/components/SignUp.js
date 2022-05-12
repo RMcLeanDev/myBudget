@@ -17,6 +17,7 @@ function SignUp(){
     const [pass2, setPass2] = useState("");
     const [viewPass, setViewPass] = useState(true);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null)
     let navigate = useNavigate()
 
     function createAccount(e){
@@ -37,26 +38,32 @@ function SignUp(){
                 "unreadMessages" : 1,
                 "messagesIDs":{
                     [messageId] : messageId}
+                }).then(() => {
+                    firebase.database().ref(`messages/${messageId}`).set({
+                        [timestamp] : {
+                            "text" : messageText,
+                            "from" : process.env.REACT_APP_DEVELOPER_ID
+                        }
+                    })
+                }).then(() => {
+                    firebase.database().ref(`users/${process.env.REACT_APP_DEVELOPER_ID}`).once("value", function(info){
+                        let snapshot = info.val();
+                        let num = snapshot.unreadMessages + 1;
+                        firebase.database().ref(`users/${process.env.REACT_APP_DEVELOPER_ID}`).update({
+                            "unreadMessages" : num, 
+                        })
+                        firebase.database().ref(`users/${process.env.REACT_APP_DEVELOPER_ID}/messageIDs`).update({
+                            [messageId]: messageId
+                        })
+                    })
                 });
-            firebase.database().ref(`messages/${messageId}`).set({
-                [timestamp] : {
-                    "text" : messageText,
-                    "from" : process.env.REACT_APP_DEVELOPER_ID
-                }
-            })
-            firebase.database().ref(`users/${process.env.REACT_APP_DEVELOPER_ID}`).once("value", function(info){
-                let num = info.undreadMessages + 1;
-                firebase.database().ref(`users/${process.env.REACT_APP_DEVELOPER_ID}`).update({
-                    "unreadMessages" : num, 
-                    "messageIDs" : {
-                        [messageId] : messageId
-                    }
-                })
-            })
             navigate("/")
         })
         .catch((error) => {
-            console.log(error)
+            if(error.message.includes("email-already-in-use")){
+                setError("This email is already in use")
+            }
+            setLoading(false);
         });
     }
 
@@ -67,6 +74,7 @@ function SignUp(){
             <form onSubmit={createAccount}>
                 <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} placeholder="First Name"/>
                 <input type="text" value={lastName} onChange={e => setLastName(e.target.value)} placeholder="Last Name"/>
+                {error ? <p>{error}</p>:null}
                 <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
                 <input type={viewPass ? "password":"text"} value={pass1} onChange={e => setPass1(e.target.value)} placeholder="Password" />
                 <input type={viewPass ? "password":"text"} value={pass2} onChange={e => setPass2(e.target.value)} placeholder="Verify Password" />
