@@ -14,6 +14,10 @@ firebase.auth().onAuthStateChanged(function(user) {
       if(snapshot.val()){
         store.dispatch(setUserInfo(snapshot.val()));
         store.dispatch(authUserTrue());
+        let info = snapshot.val();
+        Object.keys(info.messageIDs).map(info => {
+          console.log(info)
+        })
       } else {
         
       }

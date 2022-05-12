@@ -36,7 +36,7 @@ function SignUp(){
                 "lastName": lastName, 
                 "id":user.uid, 
                 "unreadMessages" : 1,
-                "messagesIDs":{
+                "messageIDs":{
                     [messageId] : messageId}
                 }).then(() => {
                     firebase.database().ref(`messages/${messageId}`).set({
