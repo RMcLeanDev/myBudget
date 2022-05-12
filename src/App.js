@@ -19,8 +19,8 @@ function App(props) {
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />}/>
-          <Route path="/settings" element={<Settings messages={props.userInfo.info.messages}/>} />
-          <Route path='/messages' element={<Messaging messages={props.userInfo.info.messages}/>} />
+          <Route path="/settings" element={<Settings unread={props.userInfo.info.unreadMessages}/>} />
+          <Route path='/messages' element={<Messaging unread={props.userInfo.info.unreadMessages}/>} />
         </Routes>
       </div>
       : props.authUserState === false ?
