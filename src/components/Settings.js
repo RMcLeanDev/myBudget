@@ -8,8 +8,6 @@ import "firebase/compat/database";
 
 function Settings(props){
 
-    console.log(props);
-
     const navigate = useNavigate();
 
     function signOut(){
